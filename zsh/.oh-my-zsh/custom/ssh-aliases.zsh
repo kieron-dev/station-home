@@ -20,5 +20,6 @@ ssh-agent-socket-available() {
 print-ssh-command() {
   username=$(whoami)
   ip=$(curl -s ipecho.net/plain)
-  echo "ssh -A -R $HOME/.gnupg/S.gpg-agent-guest:\$(gpgconf --list-dirs agent-socket) ${username}@${ip}"
+  session=$(tmux display-message -p '#S')
+  echo "ssh -A -R $HOME/.gnupg/S.gpg-agent-guest:\$(gpgconf --list-dirs agent-socket) ${username}@${ip} -t 'tmux a -t ${session}'"
 }
