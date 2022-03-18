@@ -7,7 +7,7 @@ if [[ "$current_context" == "null" ]]; then
 fi
 
 if [[ $current_context =~ gke ]]; then
-  echo "$current_context" | sed "s/gke_cff-eirini-peace-pods_europe-west[1-9]-[a-z]_//g"
+  echo "$current_context" | sed "s/gke_cff-eirini-peace-pods_europe-west[1-9]-[a-z]_/eirini:/g" | sed "s/gke_cf-on-k8s-wg_europe-west[1-9]-[a-z]_/cf-on-k8s:/g"
 elif [[ $current_context =~ kind- ]]; then
   echo "$current_context" | sed "s/^kind-//"
 else
