@@ -82,3 +82,6 @@ fi
 if ! gpg-socket-symlinked; then
   fix-gpg
 fi
+
+export VAULT_ADDR=https://vault.cf-k8s.cf:8200
+export VAULT_SKIP_VERIFY=true
