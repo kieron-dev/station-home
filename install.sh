@@ -32,6 +32,8 @@ compile_authorized_keys() {
   local authorized_keys keys key
   authorized_keys="$HOME/.ssh/authorized_keys"
 
+  mkdir -p "$HOME/.ssh"
+
   for gh_name in $(awk '{ if (usernames==1) print $2 }; /^usernames:/ { usernames=1 }' "$HOME/.git-authors"); do
     keys=$(curl -sL "https://api.github.com/users/$gh_name/keys")
     if [[ "$keys" =~ "rate limit exceeded" ]]; then
