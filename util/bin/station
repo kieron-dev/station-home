@@ -11,10 +11,10 @@ export EIRINI_STATION_USERNAME="${STATION_USER:-$(ssh-add -L | cut -d ' ' -f 3 |
 
 function usage_text() {
   cat <<EOF
-A thin wrapper over the gcloud cli to help manage your gcp eirini workstation
+A thin wrapper around the gcloud cli to help manage your gcp eirini workstation
 
 Usage:
-  $(basename "$0") [auth|create|destroy|describe|provision|start|stop|ssh]
+  $(basename "$0") [ auth | create | destroy | status | provision | start | stop | ssh ]
 
 EOF
   exit 1
@@ -27,8 +27,10 @@ case "$command" in
     "$HOME/workspace/eirini-station/gcp/${command}.sh"
     ;;
 
-  "describe")
-    gcloud compute instances describe --project cff-eirini-peace-pods --zone="europe-west2-a" "$EIRINI_STATION_USERNAME-eirini-station"
+  "status")
+    description="$(gcloud compute instances describe --project cff-eirini-peace-pods --zone="europe-west2-a" "$EIRINI_STATION_USERNAME-eirini-station")"
+    echo "name: $(yq '.name' <<<"$description")"
+    echo "status: $(yq '.status' <<<"$description")"
     ;;
 
   *)
