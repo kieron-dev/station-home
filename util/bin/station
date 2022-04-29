@@ -14,7 +14,7 @@ function usage_text() {
 A thin wrapper over the gcloud cli to help manage your gcp eirini workstation
 
 Usage:
-  $(basename "$0") [auth|create|destroy|provision|start|stop|ssh]
+  $(basename "$0") [auth|create|destroy|describe|provision|start|stop|ssh]
 
 EOF
   exit 1
@@ -25,6 +25,10 @@ case "$command" in
 
   "auth" | "create" | "destroy" | "provision" | "start" | "stop" | "ssh")
     "$HOME/workspace/eirini-station/gcp/${command}.sh"
+    ;;
+
+  "describe")
+    gcloud compute instances describe --project cff-eirini-peace-pods --zone="europe-west2-a" "$EIRINI_STATION_USERNAME-eirini-station"
     ;;
 
   *)
