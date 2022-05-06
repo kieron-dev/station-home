@@ -19,13 +19,13 @@
 [apply]
   whitespace = nowarn
 [core]
-  pager = delta
+  ;pager = delta --theme zenburn
   editor = /usr/local/bin/nvim
   hooksPath = ~/workspace/git-hooks-core
 [interactive]
-  diffFilter = delta --color-only
+  ;diffFilter = delta --theme zenburn --color-only
 [delta]
-  syntax-theme = zenburn
+  ;syntax-theme = zenburn
 [push]
   default = current
 [color "status"]
@@ -49,8 +49,6 @@
   rebase = true
 [rebase]
   autostash = true
-[rerere]
-  enabled = true
 [http "https://gopkg.in"]
   followRedirects = true
 [commit]

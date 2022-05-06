@@ -144,6 +144,7 @@ set shiftwidth=4            "Indent with 2 spaces
 
 autocmd Filetype yaml set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype ruby set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype go set tabstop=4 softtabstop=4 shiftwidth=4
 " ---------------------------------------------------------------------
 
 " ------------------------------ UI CONFIG ------------------------------
@@ -174,7 +175,7 @@ set ignorecase              "Ignore case on search
 " ------------------------ LUA MODULES SETUP --------------------------
 " load LSP
 " must be called *after* updating colorscheme, else errors aren't highlighted
-let g:coq_settings = {'auto_start': v:true, 'keymap': {'jump_to_mark': '<C-E>'}}
+let g:coq_settings = {'auto_start': v:true, 'keymap': {'jump_to_mark': '<M-e>'}}
 
 lua require('config.lsp')
 
