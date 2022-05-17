@@ -83,7 +83,7 @@ if ! gpg-socket-symlinked; then
   fix-gpg
 fi
 
-export VAULT_ADDR=https://vault.cf-k8s.cf:8200
+export VAULT_ADDR=https://vault.korifi.cf-app.com:8200
 export VAULT_SKIP_VERIFY=true
 
 autoload -U +X bashcompinit && bashcompinit
