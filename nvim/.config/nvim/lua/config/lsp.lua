@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']g', ':Lspsaga diagnostic_jump_next<CR>', opts)
     buf_set_keymap('n', '<leader>en', ':Lspsaga diagnostic_jump_next<CR>', opts)
     buf_set_keymap('n', '<leader>eb', '<cmd>lua vim.diagnostic.setqflist()<CR>', opts)
-    buf_set_keymap('n', '<leader>ea', '<cmd>lua vim.diagnostic.setqflist({workspace = true})<CR>', opts)
+    buf_set_keymap('n', '<leader>ea', '<cmd>lua vim.diagnostic.setqflist({workspace = true, severity = vim.diagnostic.severity.ERROR})<CR>', opts)
 end
 
 -- Use a loop to conveniently both setup defined servers
