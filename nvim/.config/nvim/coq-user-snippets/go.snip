@@ -1,6 +1,3 @@
-snippet kieron
-    bye1
-
 snippet desc
 abbr Ginkgo Describe
     Describe("${1:something}", func() {
@@ -62,3 +59,9 @@ abbr Gomega Expect(err).To(HaveOccurred())
 snippet exen
 abbr Gomega Expect(err).NotTo(HaveOccurred())
     Expect(err).NotTo(HaveOccurred())
+
+snippet evg
+abbr Eventually(func(g Gomega){}).Should(Succeed())
+    Eventually(func(g Gomega){
+        ${0}
+    }).Should(Succeed())
