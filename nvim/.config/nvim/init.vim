@@ -474,7 +474,7 @@ let g:CoolTotalMatches = 1
 " --------------------------------------------------------------------------
 
 " --------------------------------- Shfmt  -------------------------------
-" Use 2 spaces instead of tabs
+" Use 2 spaces instead of tabs and indent switch cases
 let g:shfmt_extra_args = '-i 2 -ci'
 let g:shfmt_fmt_on_save = 1
 " --------------------------------------------------------------------------
