@@ -87,4 +87,5 @@ export VAULT_ADDR=https://vault.korifi.cf-app.com:8200
 export VAULT_SKIP_VERIFY=true
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/vault vault
+
+complete -o nospace -C $HOME/bin/vault vault
