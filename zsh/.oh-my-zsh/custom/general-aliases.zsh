@@ -92,6 +92,5 @@ cf-ip() {
 fly-login() {
   local team
   team=${1:-"main"}
-  fly --target eirini logout
-  fly --target eirini login --team-name "$team" --concourse-url https://jetson.eirini.cf-app.com/
+  fly -t korifi login --team-name "$team" --concourse-url https://ci.korifi.cf-app.com/ </dev/tty
 }
