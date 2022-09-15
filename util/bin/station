@@ -23,14 +23,8 @@ EOF
 command="${1:-}"
 case "$command" in
 
-  "auth" | "create" | "destroy" | "provision" | "start" | "stop" | "ssh")
+  "auth" | "create" | "destroy" | "provision" | "start" | "stop" | "status" | "ssh")
     "$HOME/workspace/eirini-station/gcp/${command}.sh"
-    ;;
-
-  "status")
-    description="$(gcloud compute instances describe --project cf-on-k8s-wg --zone="europe-west2-a" "$EIRINI_STATION_USERNAME-eirini-station")"
-    echo "name: $(yq '.name' <<<"$description")"
-    echo "status: $(yq '.status' <<<"$description")"
     ;;
 
   *)
