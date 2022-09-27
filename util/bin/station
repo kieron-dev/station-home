@@ -23,8 +23,9 @@ EOF
 command="${1:-}"
 case "$command" in
 
-  "auth" | "create" | "destroy" | "provision" | "start" | "stop" | "status" | "ssh")
-    "$HOME/workspace/eirini-station/gcp/${command}.sh"
+  "auth" | "create" | "destroy" | "provision" | "start" | "stop" | "status" | "ssh" | "upload" | "download")
+    shift
+    "$HOME/workspace/eirini-station/gcp/${command}.sh" $@
     ;;
 
   *)
