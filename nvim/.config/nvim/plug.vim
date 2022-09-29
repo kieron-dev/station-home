@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
     " Add snippets for Ginkgo BDD testing library for go
     Plug 'trayo/vim-ginkgo-snippets'
     Plug 'trayo/vim-gomega-snippets'
+    Plug 'towolf/vim-helm'
     " Ruby plugin
     Plug 'vim-ruby/vim-ruby'
     " ytt syntax highlighting
