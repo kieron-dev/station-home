@@ -88,4 +88,4 @@ export VAULT_SKIP_VERIFY=true
 
 autoload -U +X bashcompinit && bashcompinit
 
-complete -o nospace -C $HOME/bin/vault vault
+complete -o nospace -C $(which vault) vault
