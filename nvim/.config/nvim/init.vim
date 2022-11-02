@@ -144,7 +144,7 @@ set shiftwidth=4            "Indent with 2 spaces
 
 autocmd Filetype yaml set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype ruby set tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype go set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 " ---------------------------------------------------------------------
 
 " ------------------------------ UI CONFIG ------------------------------
