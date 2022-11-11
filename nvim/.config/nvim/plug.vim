@@ -51,6 +51,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
+    " nvim-telescope and dependencies
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
     " use built-in syntax highlighting engine
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " ANSI escape sequences concealed, but highlighted as specified

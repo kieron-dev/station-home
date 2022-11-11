@@ -21,10 +21,10 @@ local on_attach = function(client, bufnr)
     -- Mappings
     local opts = { noremap=true, silent=true }
     buf_set_keymap('n', 'K', ':Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gy', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    buf_set_keymap('n', 'gd', ':Telescope lsp_definitions<cr>', opts)
+    buf_set_keymap('n', 'gr', ':Telescope lsp_references<cr>', opts)
+    buf_set_keymap('n', 'gi', ':Telescope lsp_implementations<cr>', opts)
+    buf_set_keymap('n', 'gy', ':Telescope lsp_type_definitions<cr>', opts)
     buf_set_keymap('n', 'gs', ':Lspsaga signature_help<CR>', opts)
     buf_set_keymap('n', 'gh', ':Lspsaga lsp_finder<CR>', opts)
 

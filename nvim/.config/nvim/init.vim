@@ -78,8 +78,8 @@ augroup END
 nnoremap <silent> <expr> <cr> empty(&buftype) ? ':w<cr>' : '<cr>'
 
 " search mappings
-nnoremap <silent> <leader>ss :Grepper -tool rg<cr>
-nnoremap <leader>sr :Rg
+nnoremap <silent> <leader>ss :Telescope grep_string<cr>
+nnoremap <leader>sr :Telescope live_grep<cr>
 
 function! s:search_term_under_cursor()
   execute "Rg " expand("<cword>")
@@ -482,38 +482,12 @@ let g:shfmt_fmt_on_save = 1
 let g:UltiSnipsExpandTrigger='<c-j>'
 " --------------------------------------------------------------------------
 
-" --------------------------------- FuzzyFind  -----------------------------
-let g:fzf_layout = { 'down': '~30%' }
-let g:fzf_buffers_jump = 1
-
-" Show preview when searching files
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" Use Rg for searching for contents and show preview
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!vendor/" '.shellescape(<q-args>), 1,
-  \    fzf#vim#with_preview({'down': '60%', 'options': '--bind alt-down:preview-down --bind alt-up:preview-up'},'right:50%', '?'),
-  \   <bang>0)
-
-" hide the statusline of the containing buffer
-augroup fzf
-  autocmd!
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-augroup END
-
-nnoremap <silent> <c-p> :Files<cr>
-nnoremap <silent> <leader>fo :Buffers<cr>
-nnoremap <silent> <leader>fm :History<cr>
-nnoremap <silent> <leader>fd :bp\|bd #<cr>
-nnoremap <silent> <leader>fn :bn<cr>
-nnoremap <silent> <leader>fp :bp<cr>
+nnoremap <silent> <c-p> :lua require'telescope.builtin'.find_files {hidden= true}<cr>
+nnoremap <silent> <leader>fo :Telescope buffers<cr>
+nnoremap <silent> <leader>fm :Telescope oldfiles<cr>
 nnoremap <silent> <leader>fa :A<cr>
 nnoremap <silent> <leader>m `
-" --------------------------------------------------------------------------
-"
+
 " -------------------------------- Startify --------------------------------
 let g:startify_custom_header = map(systemlist('fortune | cowsay -f $HOME/cows/eirini.cow'), '"               ". v:val')
 let g:startify_change_to_dir = 0
