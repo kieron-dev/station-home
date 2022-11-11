@@ -176,10 +176,8 @@ set smartcase               "Override ignorecase if search contains caps
 " ------------------------ LUA MODULES SETUP --------------------------
 " load LSP
 " must be called *after* updating colorscheme, else errors aren't highlighted
-let g:coq_settings = {'auto_start': v:true, 'keymap': {'jump_to_mark': '<M-e>'}}
-
 lua require('config.lsp')
-
+lua require('config.cmp')
 lua require('lspsaga').init_lsp_saga()
 lua require('config.lspstatus')
 lua require('config.treesitter')
@@ -244,12 +242,12 @@ function! s:Repl()
 endfunction
 
 " NB: this supports "rp that replaces the selection by the contents of @r
-vnoremap <silent> <expr> p <sid>Repl()
+xnoremap <silent> <expr> p <sid>Repl()
 " ---------------------------------------------------------------------
 
 " ------------------------------ CONTINUE INDENTING---------------------
-vnoremap > >gv
-vnoremap < <gv
+xnoremap > >gv
+xnoremap < <gv
 " ---------------------------------------------------------------------
 
 " =======================================================================================
@@ -453,7 +451,7 @@ endfunction
 
 " Toggle comment with ctrl + /
 nmap <C-_> gc$
-vmap <C-_> gc
+xmap <C-_> gc
 
 " --------------------------------- Vim-Markdown-Preview --------------------------------
 
@@ -482,8 +480,6 @@ let g:shfmt_fmt_on_save = 1
 " --------------------------------- Snippets  -------------------------------
 """ ultisnips
 let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsJumpForwardTrigger='<c-f>'
-let g:UltiSnipsJumpBackwardTrigger='<c-b>'
 " --------------------------------------------------------------------------
 
 " --------------------------------- FuzzyFind  -----------------------------
@@ -572,7 +568,7 @@ nnoremap <silent> <leader>tg :TestVisit<cr>
 " -------------------------------- vim-rhubarb -----------------------------
 " open in github
 nmap <silent> <leader>gh :GBrowse<cr>
-vmap <silent> <leader>gh :GBrowse<cr>
+xmap <silent> <leader>gh :GBrowse<cr>
 " --------------------------------------------------------------------------
 "
 set nolist
