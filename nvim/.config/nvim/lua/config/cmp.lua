@@ -1,4 +1,5 @@
 local cmp = require'cmp'
+local cmp_ultisnips_mappings = require'cmp_nvim_ultisnips.mappings'
 
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -11,15 +12,29 @@ cmp.setup({
         end,
     },
     window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-tab>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+            end
+        end, { 'i', 's' }),
+        ['<S-tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp_ultisnips_mappings.jump_backwards(fallback)
+            end
+        end, { 'i', 's' }),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
