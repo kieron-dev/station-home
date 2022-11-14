@@ -8,7 +8,8 @@ end
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            local body = args.body:gsub("interface{", "interface\\{")
+            vim.fn["UltiSnips#Anon"](body)
         end,
     },
     window = {
