@@ -70,14 +70,23 @@ compile_gpg_keys() {
 
 configure_home() {
   local bundles action
-  bundles=(nvim tmux zsh git-hooks git util cows)
+  bundles=(tmux zsh git-hooks git util cows)
   action=${1:-"install"}
 
-  stow --dotfiles --dir="$SCRIPT_DIR" --target "$HOME" --delete "${bundles[@]}"
+  mkdir -p "$HOME/.config"
+  install_bundles "$HOME" "${bundles[@]}"
+  install_bundles "$HOME/.config" "nvim"
+}
+
+install_bundles() {
+  local target=$1
+  shift
+
+  stow --dotfiles --dir="$SCRIPT_DIR" --target "$target" --delete "$@"
   if [[ "$action" == "clean" ]]; then
-    return
+    exit 0
   fi
-  stow --dotfiles --dir="$SCRIPT_DIR" --target "$HOME" "${bundles[@]}"
+  stow --dotfiles --dir="$SCRIPT_DIR" --target "$target" "$@"
 }
 
 main "$@"
