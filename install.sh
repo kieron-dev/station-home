@@ -73,11 +73,11 @@ configure_home() {
   bundles=(nvim tmux zsh git-hooks git util cows)
   action=${1:-"install"}
 
-  stow --dir="$SCRIPT_DIR" --target "$HOME" --delete "${bundles[@]}"
+  stow --dotfiles --dir="$SCRIPT_DIR" --target "$HOME" --delete "${bundles[@]}"
   if [[ "$action" == "clean" ]]; then
     return
   fi
-  stow --dir="$SCRIPT_DIR" --target "$HOME" "${bundles[@]}"
+  stow --dotfiles --dir="$SCRIPT_DIR" --target "$HOME" "${bundles[@]}"
 }
 
 main "$@"
