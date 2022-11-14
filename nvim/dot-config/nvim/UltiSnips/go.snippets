@@ -631,4 +631,10 @@ snippet exen "Gomega Expect(err).NotTo(HaveOccurred())" b
 Expect(err).NotTo(HaveOccurred())
 endsnippet
 
+snippet evg "Eventually(func(g Gomega){}).Should(Succeed(())"
+Eventually(func(g Gomega){
+	${0}
+}).Should(Succeed())
+endsnippet
+
 # vim:ft=snippets:
