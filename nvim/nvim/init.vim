@@ -134,6 +134,10 @@ highlight StatusLineNC guibg=#1c1c1c
 " Wildmenu autocomplete
 highlight StatusLine gui=italic guifg=grey guibg=#1c1c1c
 
+highlight IlluminatedWordText gui=bold guibg=#353535
+highlight IlluminatedWordRead gui=bold guibg=#353535
+highlight IlluminatedWordWrite gui=bold guibg=#353535
+
 " ---------------------------------------------------------------------
 
 " ------------------------------ SPACES & TABS -----------------------------
