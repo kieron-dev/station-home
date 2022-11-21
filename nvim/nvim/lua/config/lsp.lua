@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>ea', ":lua require'telescope.builtin'.diagnostics{severity = 'error'}<cr>", opts)
 
     if client.server_capabilities.signatureHelpProvider then
-        vim.api.nvim_command('autocmd CursorHoldI <buffer> lua vim.lsp.buf.signature_help()')
+        vim.api.nvim_create_autocmd("CursorHoldI", {buffer = 0, callback = vim.lsp.buf.signature_help})
     end
 end
 
