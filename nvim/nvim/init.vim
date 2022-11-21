@@ -191,7 +191,7 @@ lua require('config.treesitter')
 " display line error in popup after 1/2 second
 set updatetime=500
 autocmd CursorHold * Lspsaga show_line_diagnostics
-autocmd CursorHoldI * lua vim.lsp.buf.signature_help()
+autocmd CursorHoldI * lua if (vim.bo.filetype == "go") then vim.lsp.buf.signature_help() end
 
 " ---------------------------------------------------------------------
 
