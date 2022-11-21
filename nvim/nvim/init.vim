@@ -138,6 +138,8 @@ highlight IlluminatedWordText gui=bold guibg=#353535
 highlight IlluminatedWordRead gui=bold guibg=#353535
 highlight IlluminatedWordWrite gui=bold guibg=#353535
 
+highlight LspSignatureActiveParameter gui=standout
+
 " ---------------------------------------------------------------------
 
 " ------------------------------ SPACES & TABS -----------------------------
@@ -189,6 +191,7 @@ lua require('config.treesitter')
 " display line error in popup after 1/2 second
 set updatetime=500
 autocmd CursorHold * Lspsaga show_line_diagnostics
+autocmd CursorHoldI * lua vim.lsp.buf.signature_help()
 
 " ---------------------------------------------------------------------
 

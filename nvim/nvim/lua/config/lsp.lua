@@ -59,7 +59,6 @@ nvim_lsp.gopls.setup {
     settings = {
         gopls = {
             completeUnimported = true,
-            usePlaceholders = true,
             staticcheck = true,
             gofumpt = true,
         }
