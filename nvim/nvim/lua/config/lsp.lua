@@ -65,6 +65,14 @@ nvim_lsp.gopls.setup {
             completeUnimported = true,
             staticcheck = true,
             gofumpt = true,
+            analyses = {
+                nilness = true,
+                shadow = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+                unusedvariable = true,
+            },
         }
     },
 }
