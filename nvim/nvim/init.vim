@@ -189,7 +189,7 @@ lua require('config.lspstatus')
 lua require('config.treesitter')
 
 " display line error in popup after 1/2 second
-set updatetime=500
+set updatetime=50
 autocmd CursorHold * Lspsaga show_line_diagnostics
 
 " ---------------------------------------------------------------------
