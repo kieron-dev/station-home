@@ -51,6 +51,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
+    " signature help
+    Plug 'ray-x/lsp_signature.nvim'
+
     " nvim-telescope and dependencies
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }

@@ -138,8 +138,6 @@ highlight IlluminatedWordText gui=bold guibg=#353535
 highlight IlluminatedWordRead gui=bold guibg=#353535
 highlight IlluminatedWordWrite gui=bold guibg=#353535
 
-highlight LspSignatureActiveParameter gui=standout
-
 " ---------------------------------------------------------------------
 
 " ------------------------------ SPACES & TABS -----------------------------
@@ -187,6 +185,7 @@ lua require('config.cmp')
 lua require('lspsaga').init_lsp_saga()
 lua require('config.lspstatus')
 lua require('config.treesitter')
+lua require('config.lsp_signature')
 
 " display line error in popup after 1/2 second
 set updatetime=50
