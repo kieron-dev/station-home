@@ -217,7 +217,7 @@ set foldmethod=expr
 " -------------------------- AUTO FORMAT ------------------------------
 function FormatAndOrganizeImports()
     lua vim.lsp.buf.format({timeout_ms=3000})
-    silent! lua lua vim.lsp.buf.code_action({context = {only = {"source.organizeImports"}}, apply = true})
+    silent! lua vim.lsp.buf.code_action({context = {only = {"source.organizeImports"}}, apply = true})
 endfunction
 
 augroup AutoFormat
