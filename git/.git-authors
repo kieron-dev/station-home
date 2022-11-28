@@ -4,6 +4,7 @@ authors:
   gc: Giuseppe Capizzi
   db: Danail Branekov
   kb: Kieron Browne
+  dw: Dave Walter
 
 email_addresses:
   ae: eirini@cloudfoundry.org
@@ -11,9 +12,11 @@ email_addresses:
   gc: gcapizzi@vmware.com
   db: danailster@gmail.com
   kb: kbrowne@vmware.com
+  dw: walterda@vmware.com
 
 usernames:
   db: danail-branekov
   gc: gcapizzi
   gs: georgethebeatle
   kb: kieron-dev
+  dw: davewalter
