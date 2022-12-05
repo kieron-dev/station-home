@@ -40,6 +40,8 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>en', ':Lspsaga diagnostic_jump_next<CR>', opts)
     buf_set_keymap('n', '<leader>eb', ":lua require'telescope.builtin'.diagnostics{bufnr = 0}<cr>", opts)
     buf_set_keymap('n', '<leader>ea', ":lua require'telescope.builtin'.diagnostics{severity = 'error'}<cr>", opts)
+
+    buf_set_keymap('n', '<leader>oi', ':lua vim.lsp.buf.code_action({context = {only = {"source.organizeImports"}}, apply = true})<CR>', opts)
 end
 
 -- Use a loop to conveniently both setup defined servers

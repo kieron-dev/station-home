@@ -215,16 +215,10 @@ set foldmethod=expr
 " ---------------------------------------------------------------------
 
 " -------------------------- AUTO FORMAT ------------------------------
-function FormatAndOrganizeImports()
-    lua vim.lsp.buf.format({timeout_ms=3000})
-    silent! lua vim.lsp.buf.code_action({context = {only = {"source.organizeImports"}}, apply = true})
-endfunction
-
 augroup AutoFormat
     autocmd!
-    autocmd BufWritePre *.go call FormatAndOrganizeImports()
-    autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 3000)
-    autocmd BufWritePre *.json,*.md PrettierAsync
+    autocmd BufWritePre *.go lua vim.lsp.buf.format({timeout_ms=3000})
+	autocmd BufWritePre *.json PrettierAsync
 augroup END
 " ---------------------------------------------------------------------
 
