@@ -29,14 +29,14 @@ EOF
 }
 
 compile_authorized_keys() {
-  local authorized_keys keys key
+  local authorized_keys keys_json
   authorized_keys="$HOME/.ssh/authorized_keys"
 
   mkdir -p "$HOME/.ssh"
 
   for gh_name in $(awk '{ if (usernames==1) print $2 }; /^usernames:/ { usernames=1 }' "$HOME/.git-authors"); do
-    keys=$(curl -sL "https://api.github.com/users/$gh_name/keys")
-    if [[ "$keys" =~ "rate limit exceeded" ]]; then
+    keys_json=$(curl -sL "https://api.github.com/users/$gh_name/keys")
+    if [[ "$keys_json" =~ "rate limit exceeded" ]]; then
       echo "+-------------------------------------------------------------------------+"
       echo "| ⚠️  WARNING:                                                             |"
       echo "+-------------------------------------------------------------------------+"
@@ -45,8 +45,8 @@ compile_authorized_keys() {
       echo "+-------------------------------------------------------------------------+"
       return
     fi
-    key=$(jq -r ".[].key" <<<"$keys")
-    echo "$key $gh_name" >>"$HOME/.ssh/authorized_keys"
+    jq -r ".[].key" <<<"$keys_json" |
+      xargs -I{} echo {} "$gh_name" >>"$HOME/.ssh/authorized_keys"
   done
 
   # remove duplicate keys
