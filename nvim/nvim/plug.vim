@@ -12,8 +12,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'christoomey/vim-system-copy'
     " Navigate through vim splits seamlessly
     Plug 'christoomey/vim-tmux-navigator'
-    " popup windows for LSP helpers
-    Plug 'tami5/lspsaga.nvim'
     " Light and configurable statusline
     Plug 'itchyny/lightline.vim'
     " Preview markdown files in the browser

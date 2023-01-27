@@ -182,15 +182,9 @@ set smartcase               "Override ignorecase if search contains caps
 " must be called *after* updating colorscheme, else errors aren't highlighted
 lua require('config.lsp')
 lua require('config.cmp')
-lua require('lspsaga').init_lsp_saga()
 lua require('config.lspstatus')
 lua require('config.treesitter')
 lua require('config.lsp_signature')
-
-" display line error in popup after 1/2 second
-set updatetime=50
-autocmd CursorHold * Lspsaga show_line_diagnostics
-
 " ---------------------------------------------------------------------
 
 " ---------------------- LEFT MARGIN ----------------------------------
