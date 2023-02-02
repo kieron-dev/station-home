@@ -30,7 +30,7 @@ EOF
 
 compile_authorized_keys() {
   local authorized_keys keys_json
-  authorized_keys="$HOME/.ssh/authorized_keys"
+  authorized_keys="$(mktemp)"
 
   mkdir -p "$HOME/.ssh"
 
@@ -46,11 +46,10 @@ compile_authorized_keys() {
       return
     fi
     jq -r ".[].key" <<<"$keys_json" |
-      xargs -I{} echo {} "$gh_name" >>"$HOME/.ssh/authorized_keys"
+      xargs -I{} echo {} "$gh_name" >>"$authorized_keys"
   done
 
-  # remove duplicate keys
-  sort --unique "$authorized_keys" -o "$authorized_keys"
+  mv "$authorized_keys" "$HOME/.ssh/authorized_keys"
 }
 
 compile_gpg_keys() {
