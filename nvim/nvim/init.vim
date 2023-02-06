@@ -613,9 +613,9 @@ augroup GoGenerate
   autocmd FileType go call SetGoCompilerOptions()
 augroup END
 
-function! GoGenerate(bang) abort
+function! RunInQFList(bang, cmd) abort
   let default_makeprg = &makeprg
-  let &makeprg = "go generate " . shellescape(expand("%:p:h"))
+  let &makeprg = a:cmd
 
   try
     silent! exe 'make!'
@@ -639,5 +639,7 @@ function! GoGenerate(bang) abort
   endif
 endfunction
 
-command! -bang GoGenerate  call GoGenerate(<bang>0)
+command! -bang GoGenerate call RunInQFList(<bang>0, "go generate " . shellescape(expand("%:p:h")))
+command! -bang GolangCILint  call RunInQFList(<bang>0, "golangci-lint run")
+nnoremap <leader>el :GolangCILint<CR>
 " --------------------------------------------------------------------------
