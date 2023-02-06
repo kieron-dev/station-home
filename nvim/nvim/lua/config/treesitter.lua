@@ -14,6 +14,7 @@ require'nvim-treesitter.configs'.setup {
     "http",
     "javascript",
     "json",
+    "lua",
     "make",
     "proto",
     "regex",
