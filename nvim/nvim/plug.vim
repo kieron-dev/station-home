@@ -74,6 +74,7 @@ call plug#begin('~/.vim/plugged')
     " Add various code snippets
     Plug 'SirVer/ultisnips'
     " Comment stuff out
+    Plug 'tpope/vim-abolish'
     Plug 'tpope/vim-commentary'
     " Unix utility commands
     Plug 'tpope/vim-eunuch'
