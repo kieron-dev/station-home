@@ -1,5 +1,5 @@
 " ------------------------------ PLUGINS ------------------------------
-source $HOME/.config/nvim/plug.vim
+lua require('config.plug')
 " ---------------------------------------------------------------------
 
 " ------------------------------ GENERAL ------------------------------
@@ -87,7 +87,7 @@ endfunction
 nnoremap <leader>st :call <SID>search_term_under_cursor()<CR>
 
 " autoremove trailing whitespace
-autocmd BufWritePre * FixWhitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 " shell-like navigation while in normal mode
 inoremap <c-b> <c-\><c-o>h
@@ -199,9 +199,6 @@ nnoremap j gj
 "Move vertically (up) by visual line
 nnoremap k gk
 
-" Movement in popup menu
-inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " ---------------------------------------------------------------------
 
 
@@ -277,148 +274,11 @@ let NERDTreeShowHidden=1
 
 " --------------------------------------------------------------------------
 
-" --------------------------------- Lightline --------------------------------
+" --------------------------------- Lualine --------------------------------
 
 " Show statusline
 set laststatus=2
 
-" Colors
-let s:green = [ '#99ad6a', 107 ]
-let s:red = [ '#dd1c1c', 167 ]
-let s:yellow = [ '#ffb964', 215 ]
-let s:blue = [ '#6A95EA', 103, 'bold' ]
-let s:lightgrey = [ '#999494', 'none' ]
-let s:blackish = [ '#1c1c1c', 'none' ]
-let s:darkgrey = [ '#282525', 'none' ]
-
-let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-
-" Middle
-let s:p.normal.middle = [ [ s:lightgrey, s:blackish ] ]
-
-" Left
-let s:p.normal.left = [ [ s:blue, s:blackish ], [ s:green, s:blackish ], [ s:red, s:blackish ], [ s:lightgrey, s:blackish ] ]
-let s:p.insert.left = [ [ s:blue, s:blackish ], [ s:green, s:blackish ], [ s:red, s:blackish ], [ s:lightgrey, s:blackish ] ]
-let s:p.replace.left = [ [ s:blue, s:blackish ], [ s:green, s:blackish ], [ s:red, s:blackish ], [ s:lightgrey, s:blackish ] ]
-let s:p.visual.left = [ [ s:blue, s:blackish ], [ s:green, s:blackish ], [ s:red, s:blackish ], [ s:lightgrey, s:blackish ] ]
-
-" Right
-let s:p.normal.right = [ [ s:lightgrey, s:blackish ], [ s:lightgrey, s:blackish ], [ s:lightgrey, s:blackish ] ]
-
-" Inactive
-let s:p.inactive.middle = [ [ s:lightgrey, s:darkgrey ] ]
-let s:p.inactive.right = [ [ s:darkgrey, s:darkgrey ], [ s:darkgrey, s:darkgrey ] ]
-
-" Errors & warnings
-let s:p.normal.error = [ [ s:red, s:blackish ] ]
-let s:p.normal.warning = [ [ s:yellow, s:blackish ] ]
-
-" Tabs
-let s:p.tabline.left = [ [ s:lightgrey, s:blackish ] ]
-let s:p.tabline.tabsel = [ [ s:blue, s:blackish ] ]
-
-" Lightline configs
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch' ],
-      \             [ 'readonly' ],
-      \             [ 'relativepath', 'modified' ] ],
-      \   'right': [ [ 'lspstatus'],
-      \              [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'filetype', 'encodingformat' ] ],
-      \ },
-      \ 'component_function': {
-      \   'lspstatus': 'LspStatus',
-      \   'gitbranch': 'LightlineBranch',
-      \   'mode': 'LightlineMode',
-      \   'encodingformat': 'LightlineFileEncodingFormat',
-      \   'lineinfo': 'LightlineLineInfo',
-      \   'percent': 'LightlinePercent',
-      \   'filetype': 'LightlineFiletype',
-      \   'relativepath': 'LightlineRelativePath',
-      \   'modified': 'LightlineModified',
-      \   'readonly': 'LightlineReadonly',
-      \ },
-      \ 'subseparator': { 'left': '', 'right': '' },
-      \ }
-
-" Custom functions
-function! LspStatus() abort
-  if luaeval('#vim.lsp.buf_get_clients() > 0')
-    return luaeval("require('lsp-status').status()")
-  endif
-
-  return ''
-endfunction
-
-function! LightlineBranch()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  let branch = FugitiveHead()
-  return branch !=# '' ? ' ' . branch : ''
-endfunction
-
-function! LightlineMode()
-  if &ft == 'nerdtree'
-    return '« NERD »'
-  endif
-  return '« ' . lightline#mode() . ' »'
-endfunction
-
-function! LightlineFileEncodingFormat()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  let encoding = &fenc!=#""?&fenc:&enc
-  let format = &ff
-  return encoding . '[' . format . ']'
-endfunction
-
-function! LightlineLineInfo()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return line('.').':'. col('.')
-endfunction
-
-function! LightlinePercent()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return line('.') * 100 / line('$') . '%'
-endfunction
-
-function! LightlineFiletype()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return &ft !=# "" ? &ft : "no ft"
-endfunction
-
-function! LightlineRelativePath()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return expand("%")
-endfunction
-
-function! LightlineModified()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-  if &ft == 'nerdtree'
-    return ''
-  endif
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
 " --------------------------------------------------------------------------
 
 " Toggle comment with ctrl + /
@@ -447,11 +307,6 @@ let g:CoolTotalMatches = 1
 " Use 2 spaces instead of tabs and indent switch cases
 let g:shfmt_extra_args = '-i 2 -ci'
 let g:shfmt_fmt_on_save = 1
-" --------------------------------------------------------------------------
-
-" --------------------------------- Snippets  -------------------------------
-""" ultisnips
-let g:UltiSnipsExpandTrigger='<c-j>'
 " --------------------------------------------------------------------------
 
 nnoremap <silent> <c-p> :lua require'telescope.builtin'.find_files {hidden= true}<cr>
