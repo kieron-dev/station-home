@@ -98,45 +98,8 @@ inoremap <c-f> <c-\><c-o>l
 "Enable syntax processing
 syntax enable
 
-" Colorscheme overrides
-let g:jellybeans_overrides = {'background': { 'guibg': '1c1c1c' }}
-
 " This colorscheme
 colorscheme jellybeans
-
-" Because jellybeans shows wrong background colors for whitespace characters  on current line
-highlight NonText guibg=NONE
-
-" Line numbers
-highlight LineNr guifg=#545252 guibg=#1c1c1c
-
-" Current line colors
-highlight CursorLine guibg=#232323
-
-" Numbers when cursorline is enabled
-highlight CursorLineNr guibg=#1c1c1c guifg=#6A95EA
-
-" Whitespace characters color
-highlight SpecialKey guifg=grey35
-
-" Search result highlight color
-highlight Search gui=bold guifg=#000000 guibg=#6A95EA
-
-" Vertical split highlight color
-highlight VertSplit guifg=#1c1c1c guibg=#1c1c1c
-
-" Sign column colors
-highlight SignColumn term=standout guifg=#777777 guibg=#1c1c1c
-
-" Status lines of not-current windows
-highlight StatusLineNC guibg=#1c1c1c
-
-" Wildmenu autocomplete
-highlight StatusLine gui=italic guifg=grey guibg=#1c1c1c
-
-highlight IlluminatedWordText gui=bold guibg=#353535
-highlight IlluminatedWordRead gui=bold guibg=#353535
-highlight IlluminatedWordWrite gui=bold guibg=#353535
 
 " ---------------------------------------------------------------------
 
@@ -160,6 +123,20 @@ set lazyredraw                          "Redraw only when we need to.
 set showmatch                           "Highlight matching [{()}]
 set fillchars+=vert:│                   "Solid vertical split line
 set cursorline                          "Highlight current line
+
+set updatetime=500
+augroup HLWord
+    au!
+    au CursorHold * lua vim.lsp.buf.document_highlight()
+    au CursorHoldI * lua vim.lsp.buf.document_highlight()
+    au CursorMoved * lua vim.lsp.buf.clear_references()
+augroup END
+
+" diagnostic symbols
+sign define DiagnosticSignError text=  linehl= texthl=DiagnosticSignError numhl=
+sign define DiagnosticSignWarn text=  linehl= texthl=DiagnosticSignWarn numhl=
+sign define DiagnosticSignInfo text=  linehl= texthl=DiagnosticSignInfo numhl=
+sign define DiagnosticSignHint text=  linehl= texthl=DiagnosticSignHint numhl=
 
 augroup CursorLine
     au!
@@ -339,9 +316,6 @@ let s:p.normal.warning = [ [ s:yellow, s:blackish ] ]
 " Tabs
 let s:p.tabline.left = [ [ s:lightgrey, s:blackish ] ]
 let s:p.tabline.tabsel = [ [ s:blue, s:blackish ] ]
-
-" Set the palette
-let g:lightline#colorscheme#jellybeans#palette = lightline#colorscheme#flatten(s:p)
 
 " Lightline configs
 let g:lightline = {

@@ -35,7 +35,8 @@ call plug#begin('~/.vim/plugged')
     " Unobtrusive scratch window
     Plug 'mtth/scratch.vim'
     " Our colorscheme
-    Plug 'nanotech/jellybeans.vim'
+    Plug 'kabouzeid/nvim-jellybeans'
+    Plug 'rktjmp/lush.nvim'
     " Config for built-in nvim lsp
     Plug 'neovim/nvim-lspconfig'
     " lsp status helper
@@ -67,8 +68,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'rhysd/git-messenger.vim'
     " Make hlsearch more useful
     Plug 'romainl/vim-cool'
-    " Selectively illuminating other uses of the current word under the cursor
-    Plug 'RRethy/vim-illuminate'
     " Directory tree explorer
     Plug 'scrooloose/nerdtree'
     " Add various code snippets
