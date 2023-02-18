@@ -79,7 +79,7 @@ require("lazy").setup({
     {'SirVer/ultisnips',
     lazy = false,
     config = function()
-        vim.g.UltisnipsExpandTrigger = '<C-j>'
+        vim.g.UltiSnipsExpandTrigger = '<C-j>'
     end,
     },
     -- Comment stuff out
