@@ -81,11 +81,6 @@ nnoremap <silent> <expr> <cr> empty(&buftype) ? ':w<cr>' : '<cr>'
 nnoremap <silent> <leader>ss :Telescope grep_string<cr>
 nnoremap <leader>sr :Telescope live_grep<cr>
 
-function! s:search_term_under_cursor()
-  execute "Rg " expand("<cword>")
-endfunction
-nnoremap <leader>st :call <SID>search_term_under_cursor()<CR>
-
 " autoremove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
