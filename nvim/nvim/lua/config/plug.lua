@@ -44,27 +44,83 @@ require("lazy").setup({
     'rktjmp/lush.nvim',
     -- Config for built-in nvim lsp
     'neovim/nvim-lspconfig',
-    -- lsp status helper
-    'nvim-lua/lsp-status.nvim',
-
     -- nvim-cmp and its plugins
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'quangnguyen30192/cmp-nvim-ultisnips',
+        },
+    },
+
     'quangnguyen30192/cmp-nvim-ultisnips',
 
     -- signature help
-    'ray-x/lsp_signature.nvim',
+    {
+        'ray-x/lsp_signature.nvim',
+        opts = {
+            doc_lines = 0,
+            hint_enable = false,
+        },
+    },
 
     -- nvim-telescope and dependencies
-    'nvim-lua/plenary.nvim',
-    {'nvim-telescope/telescope.nvim', branch = '0.1.x' },
-    {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        dependencies = {
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'make',
+                config = function()
+                    require"telescope".load_extension("fzf")
+                end,
+            },
+            'nvim-lua/plenary.nvim',
+        },
+    },
 
     -- use built-in syntax highlighting engine
-    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "bash",
+                    "c",
+                    "comment",
+                    "css",
+                    "dockerfile",
+                    "go",
+                    "gomod",
+                    "gowork",
+                    "hcl",
+                    "help",
+                    "html",
+                    "http",
+                    "javascript",
+                    "json",
+                    "lua",
+                    "make",
+                    "proto",
+                    "regex",
+                    "ruby",
+                    "toml",
+                    "vim",
+                    "yaml",
+                },
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+            })
+        end,
+    },
+
     -- ANSI escape sequences concealed, but highlighted as specified
     'powerman/vim-plugin-AnsiEsc',
     -- prettier formatting
@@ -76,14 +132,15 @@ require("lazy").setup({
     -- Directory tree explorer
     'scrooloose/nerdtree',
     -- Add various code snippets
-    {'SirVer/ultisnips',
-    lazy = false,
-    config = function()
-        vim.g.UltiSnipsExpandTrigger = '<C-j>'
-    end,
+    {
+        'SirVer/ultisnips',
+        config = function()
+            vim.g.UltiSnipsExpandTrigger = '<C-j>'
+        end,
     },
-    -- Comment stuff out
+    -- Change case and case-sensitive substitutions
     'tpope/vim-abolish',
+    -- Comment stuff out
     'tpope/vim-commentary',
     -- Unix utility commands
     'tpope/vim-eunuch',

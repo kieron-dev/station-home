@@ -159,9 +159,6 @@ set smartcase               "Override ignorecase if search contains caps
 " must be called *after* updating colorscheme, else errors aren't highlighted
 lua require('config.lsp')
 lua require('config.cmp')
-lua require('config.lspstatus')
-lua require('config.treesitter')
-lua require('config.lsp_signature')
 " ---------------------------------------------------------------------
 
 " ---------------------- LEFT MARGIN ----------------------------------
