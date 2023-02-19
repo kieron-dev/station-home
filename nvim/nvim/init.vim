@@ -127,9 +127,9 @@ set cursorline                          "Highlight current line
 set updatetime=500
 augroup HLWord
     au!
-    au CursorHold * lua vim.lsp.buf.document_highlight()
-    au CursorHoldI * lua vim.lsp.buf.document_highlight()
-    au CursorMoved * lua vim.lsp.buf.clear_references()
+    au CursorHold * silent! lua vim.lsp.buf.document_highlight()
+    au CursorHoldI * silent! lua vim.lsp.buf.document_highlight()
+    au CursorMoved * silent! lua vim.lsp.buf.clear_references()
 augroup END
 
 " diagnostic symbols
