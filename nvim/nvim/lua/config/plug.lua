@@ -30,7 +30,6 @@ require("lazy").setup({
     'josharian/impl',
     -- Outline viewer for vim
     'majutsushi/tagbar',
-    'mhinz/vim-grepper',
     -- Show git diff in the sign column
     'mhinz/vim-signify',
     -- Fancy start screen
