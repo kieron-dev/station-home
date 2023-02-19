@@ -218,54 +218,6 @@ xnoremap < <gv
 " =============================== PLUGIN CONFIGURATIONS =================================
 " =======================================================================================
 
-" --------------------------------- NERDTree -------------------------------
-
-function! NERDTreeToggleAndFind()
-  if (exists('t:NERDTreeBufName') && bufwinnr(t:NERDTreeBufName) != -1)
-    execute ':NERDTreeClose'
-  else
-    if (expand("%:t") != '')
-        execute ':NERDTreeFind'
-    else
-        execute ':NERDTreeToggle'
-    endif
-  endif
-endfunction
-
-" Toggle NERDTree
-nnoremap <C-n> :call NERDTreeToggleAndFind()<CR>
-nnoremap <silent> \ :NERDTreeToggle<CR>
-nnoremap <silent> \| :NERDTreeFind<cr>
-
-" Single mouse click will open any node
-let g:NERDTreeMouseMode=3
-
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Automatically delete the buffer of the file you just deleted with NerdTree
-let NERDTreeAutoDeleteBuffer = 1
-
-" Hide 'Press ? for help' and bookmarks
-let NERDTreeMinimalUI = 1
-
-" Expand directory symbols
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-
-" Unmap C-j and C-k from NERDTree.
-" This breaks vim-tmux integration otherwise.
-let g:NERDTreeMapJumpNextSibling = ''
-let g:NERDTreeMapJumpPrevSibling = ''
-
-" Do not show whitespace characters in NERDTree window
-autocmd FileType nerdtree setlocal nolist
-
-" Show hidden files
-let NERDTreeShowHidden=1
-
-" --------------------------------------------------------------------------
-
 " --------------------------------- Lualine --------------------------------
 
 " Show statusline

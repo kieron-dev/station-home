@@ -130,7 +130,21 @@ require("lazy").setup({
     -- Make hlsearch more useful
     'romainl/vim-cool',
     -- Directory tree explorer
-    'scrooloose/nerdtree',
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        keys = {
+            { "<C-n>", "<cmd>Neotree toggle reveal=true<cr>", desc = "Toggle NeoTree" },
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        opts = {
+            close_if_last_window = true,
+        },
+    },
     -- Add various code snippets
     {
         'SirVer/ultisnips',
