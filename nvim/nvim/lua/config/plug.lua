@@ -120,6 +120,13 @@ require("lazy").setup({
         end,
     },
 
+    {
+        "j-hui/fidget.nvim",
+        config = function()
+            require"fidget".setup{}
+        end,
+    },
+
     -- ANSI escape sequences concealed, but highlighted as specified
     'powerman/vim-plugin-AnsiEsc',
     -- prettier formatting
