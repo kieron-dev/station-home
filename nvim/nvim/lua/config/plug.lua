@@ -122,9 +122,8 @@ require("lazy").setup({
 
     {
         "j-hui/fidget.nvim",
-        config = function()
-            require"fidget".setup{}
-        end,
+        name = "fidget",
+        config = true,
     },
 
     -- ANSI escape sequences concealed, but highlighted as specified
