@@ -7,6 +7,7 @@ main() {
   configure_home "$@"
   generate_gitconfig
   compile_authorized_keys
+  cleanup_old_vim_plug
   compile_gpg_keys
 }
 
@@ -75,6 +76,10 @@ configure_home() {
   mkdir -p "$HOME/.config"
   install_bundles "$HOME" "${bundles[@]}"
   install_bundles "$HOME/.config" "nvim"
+}
+
+cleanup_old_vim_plug() {
+  rm -f "$HOME/.local/share/nvim/site/autoload/plug.vim"
 }
 
 install_bundles() {
