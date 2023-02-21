@@ -21,7 +21,12 @@ require("lazy").setup({
     -- Navigate through vim splits seamlessly
     'christoomey/vim-tmux-navigator',
     -- Light and configurable statusline
-    {'nvim-lualine/lualine.nvim', config = true },
+    {
+        'nvim-lualine/lualine.nvim',
+        opts = {
+            theme = "tokyonight",
+        },
+    },
     -- Preview markdown files in the browser
     'JamshedVesuna/vim-markdown-preview',
     -- Test runner integration
@@ -39,7 +44,12 @@ require("lazy").setup({
     -- Unobtrusive scratch window
     'mtth/scratch.vim',
     -- Our colorscheme
-    'kabouzeid/nvim-jellybeans',
+    {
+        'folke/tokyonight.nvim',
+        opts = {
+            style = "night",
+        },
+    },
     'rktjmp/lush.nvim',
     -- Config for built-in nvim lsp
     'neovim/nvim-lspconfig',

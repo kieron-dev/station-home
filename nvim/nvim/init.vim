@@ -95,7 +95,7 @@ inoremap <c-f> <c-\><c-o>l
 syntax enable
 
 " This colorscheme
-colorscheme jellybeans
+colorscheme tokyonight
 
 " ---------------------------------------------------------------------
 
