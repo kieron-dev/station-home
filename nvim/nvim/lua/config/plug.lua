@@ -36,7 +36,31 @@ require("lazy").setup({
     -- Outline viewer for vim
     'majutsushi/tagbar',
     -- Show git diff in the sign column
-    'mhinz/vim-signify',
+    {
+        'lewis6991/gitsigns.nvim',
+        config = true,
+        opts = {
+            signs = {
+                add = { text = "+" },
+                change = { text = "~" },
+                delete = { text = "-" },
+                topdelete = { text = "-" },
+                changedelete = { text = "/" },
+            },
+            numhl = true,
+            on_attach = function(buffer)
+                local gs = package.loaded.gitsigns
+
+                local function map(mode, l, r, desc)
+                    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+                end
+
+                -- stylua: ignore start
+                map("n", "]c", gs.next_hunk, "Next Hunk")
+                map("n", "[c", gs.prev_hunk, "Prev Hunk")
+            end,
+        },
+    },
     -- Fancy start screen
     'mhinz/vim-startify',
     -- Toggle quickfix and location windows
