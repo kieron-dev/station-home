@@ -126,8 +126,6 @@ require("lazy").setup({
         config = true,
     },
 
-    -- ANSI escape sequences concealed, but highlighted as specified
-    'powerman/vim-plugin-AnsiEsc',
     -- prettier formatting
     {'prettier/vim-prettier', build = 'npm install', ft = {'json', 'markdown'}},
     -- Reveal the commit messages under the cursor in a 'popup window'
@@ -140,6 +138,7 @@ require("lazy").setup({
         branch = "v2.x",
         keys = {
             { "<C-n>", "<cmd>Neotree toggle reveal=true<cr>", desc = "Toggle NeoTree" },
+            { "\\", "<cmd>Neotree toggle reveal=true<cr>", desc = "Toggle NeoTree" },
         },
         dependencies = {
             "nvim-lua/plenary.nvim",

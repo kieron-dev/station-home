@@ -1,3 +1,7 @@
+" must be set before plugins are loaded, else they'll use the default
+" backslash
+let mapleader=' '
+
 " ------------------------------ PLUGINS ------------------------------
 lua require('config.plug')
 " ---------------------------------------------------------------------
@@ -24,9 +28,6 @@ set inccommand=nosplit                                                "Shows the
 if !has('nvim')
   set ttymouse=sgr                                                    "Make the mouse work even in columns beyond 223
 endif
-
-let mapleader=' '
-let maplocalleader='\'
 
 "Replace escape with jk
 inoremap jk <esc>
