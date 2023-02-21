@@ -132,7 +132,6 @@ require("lazy").setup({
 
     {
         "j-hui/fidget.nvim",
-        name = "fidget",
         config = true,
     },
 
