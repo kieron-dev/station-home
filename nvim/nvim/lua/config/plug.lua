@@ -135,6 +135,11 @@ require("lazy").setup({
         config = true,
     },
 
+    {
+        "folke/which-key.nvim",
+        config = true,
+    },
+
     -- prettier formatting
     {'prettier/vim-prettier', build = 'npm install', ft = {'json', 'markdown'}},
     -- Reveal the commit messages under the cursor in a 'popup window'
