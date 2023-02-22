@@ -185,6 +185,11 @@ require("lazy").setup({
         },
         opts = {
             close_if_last_window = true,
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                },
+            },
         },
     },
     -- Add various code snippets
