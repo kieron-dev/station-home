@@ -413,7 +413,7 @@ function! RunInQFList(bang, cmd) abort
   endif
 endfunction
 
-command! -bang GoGenerate call RunInQFList(<bang>0, "go generate " . shellescape(expand("%:p:h")))
+command! -bang GoGenerate call RunInQFList(<bang>0, "go generate " . shellescape(expand("%:p:h"))) | LspRestart
 command! -bang GolangCILint  call RunInQFList(<bang>0, "golangci-lint run")
 nnoremap <leader>el :GolangCILint<CR>
 " --------------------------------------------------------------------------
