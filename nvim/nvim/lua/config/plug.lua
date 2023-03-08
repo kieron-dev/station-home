@@ -145,6 +145,7 @@ require("lazy").setup({
                     "proto",
                     "regex",
                     "ruby",
+                    "terraform",
                     "toml",
                     "vim",
                     "yaml",
