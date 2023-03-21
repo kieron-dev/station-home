@@ -158,6 +158,18 @@ require("lazy").setup({
         end,
     },
 
+    -- Show context nesting at top of window
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            require("treesitter-context").setup({
+                patterns = {
+                    go = {"func"},
+                },
+            })
+        end,
+    },
+
     {
         "j-hui/fidget.nvim",
         config = true,
