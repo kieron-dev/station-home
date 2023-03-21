@@ -28,6 +28,10 @@ require("lazy").setup({
             sections = {
                 lualine_c = {{ "filename", path = 1 }},
             },
+            tabline = {
+                lualine_a = {'buffers'},
+                lualine_z = {'tabs'}
+            }
         },
     },
     {
