@@ -30,6 +30,16 @@ require("lazy").setup({
             },
         },
     },
+    {
+        'kazhala/close-buffers.nvim',
+        config = function()
+            require'close_buffers'.setup{}
+            vim.keymap.set("n",  "<leader>bd", "<cmd>BDelete this<cr>", {desc = "Delete buffer" })
+            vim.keymap.set("n",  "<leader>bD", "<cmd>BDelete! this<cr>", {desc = "Delete buffer!" })
+            vim.keymap.set("n",  "<leader>bo", "<cmd>BDelete other<cr>", {desc = "Delete other buffers" })
+            vim.keymap.set("n",  "<leader>bn", "<cmd>enew<cr>", {desc = "New buffer" })
+        end,
+    },
     -- Preview markdown files in the browser
     'JamshedVesuna/vim-markdown-preview',
     -- Test runner integration
