@@ -44,8 +44,6 @@ require("lazy").setup({
             vim.keymap.set("n",  "<leader>bn", "<cmd>enew<cr>", {desc = "New buffer" })
         end,
     },
-    -- Preview markdown files in the browser
-    'JamshedVesuna/vim-markdown-preview',
     -- Test runner integration
     'janko/vim-test',
     -- Generates method stubs for implementing an interface
