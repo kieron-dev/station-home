@@ -147,7 +147,6 @@ require("lazy").setup({
                     "gomod",
                     "gowork",
                     "hcl",
-                    "help",
                     "html",
                     "http",
                     "javascript",
@@ -160,6 +159,7 @@ require("lazy").setup({
                     "terraform",
                     "toml",
                     "vim",
+                    "vimdoc",
                     "yaml",
                 },
                 highlight = {
