@@ -193,7 +193,17 @@ require("lazy").setup({
     },
 
     -- prettier formatting
-    {'prettier/vim-prettier', build = 'npm install', ft = {'json', 'markdown'}},
+    {
+        'prettier/vim-prettier',
+        build = 'npm install',
+        ft = {'javascript', 'typescript', 'typescriptreact', 'json', 'markdown'},
+        config = function()
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = {"*.js", "*.jsx", "*.json", "*.ts", "*.tsx"},
+                command = "Prettier",
+            })
+        end,
+    },
     -- Reveal the commit messages under the cursor in a 'popup window'
     'rhysd/git-messenger.vim',
     -- Make hlsearch more useful
