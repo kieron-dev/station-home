@@ -47,7 +47,6 @@ export PATH=$PATH:/snap/bin
 # npm
 npm_packages="${HOME}/.npm-packages"
 export PATH="$PATH:$npm_packages/bin"
-export MANPATH="$MANPATH-$(manpath)}:$npm_packages/share/man"
 
 # Show non-zero exit status
 precmd_pipestatus() {
