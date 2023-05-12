@@ -85,6 +85,18 @@ nnoremap <leader>sr :Telescope live_grep<cr>
 " autoremove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" format terraform files
+augroup ft_terraform
+    au!
+    au BufWritePre *.tf :call Terraform_fmt()
+augroup END
+
+func! Terraform_fmt()
+    let savedview = winsaveview()
+    exe '%!terraform fmt -'
+    call winrestview(savedview)
+endfunc
+
 " shell-like navigation while in normal mode
 inoremap <c-b> <c-\><c-o>h
 inoremap <c-f> <c-\><c-o>l
