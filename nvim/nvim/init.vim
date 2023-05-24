@@ -346,8 +346,14 @@ function! GoAlternateSwitch(bang, cmd) abort
   elseif file =~# '^\f\+\.go$'
     let l:root = split(file, ".go$")[0]
     let l:alt_file = l:root . '_test.go'
+  elseif file =~# '^\f\+\.test\.ts$'
+    let l:root = split(file, '.test.ts$')[0]
+    let l:alt_file = l:root . ".ts"
+  elseif file =~# '^\f\+\.ts$'
+    let l:root = split(file, ".ts$")[0]
+    let l:alt_file = l:root . '.test.ts'
   else
-    echo "not a go file"
+    echo "not a go/typescript file"
     return
   endif
   if !filereadable(alt_file) && !bufexists(alt_file) && !a:bang
