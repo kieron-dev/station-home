@@ -172,14 +172,7 @@ require("lazy").setup({
 
     -- Show context nesting at top of window
     {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup({
-                patterns = {
-                    go = {"func"},
-                },
-            })
-        end,
+        "gcapizzi/nvim-treesitter-context",
     },
 
     {
