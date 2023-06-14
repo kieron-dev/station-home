@@ -171,9 +171,7 @@ require("lazy").setup({
     },
 
     -- Show context nesting at top of window
-    {
-        "gcapizzi/nvim-treesitter-context",
-    },
+    "nvim-treesitter/nvim-treesitter-context",
 
     {
         "j-hui/fidget.nvim",
