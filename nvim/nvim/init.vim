@@ -117,7 +117,7 @@ set softtabstop=4           "Number of spaces in tab when editing
 set expandtab               "Tabs are spaces
 set shiftwidth=4            "Indent with 2 spaces
 
-autocmd Filetype yaml,json,typescript,ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype yaml,json,typescript,typescriptreact,ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 " ---------------------------------------------------------------------
 
@@ -351,6 +351,12 @@ function! GoAlternateSwitch(bang, cmd) abort
   elseif file =~# '^\f\+\.ts$'
     let l:root = split(file, ".ts$")[0]
     let l:alt_file = l:root . '.test.ts'
+  elseif file =~# '^\f\+\.test\.tsx$'
+    let l:root = split(file, '.test.tsx$')[0]
+    let l:alt_file = l:root . ".tsx"
+  elseif file =~# '^\f\+\.tsx$'
+    let l:root = split(file, ".tsx$")[0]
+    let l:alt_file = l:root . '.test.tsx'
   else
     echo "not a go/typescript file"
     return
