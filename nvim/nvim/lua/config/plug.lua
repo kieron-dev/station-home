@@ -243,15 +243,25 @@ require("lazy").setup({
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
         },
-        opts = {
-            close_if_last_window = true,
-            filesystem = {
-                filtered_items = {
-                    visible = true,
+        config = function()
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                filesystem = {
+                    filtered_items = {
+                        visible = true,
+                    },
+                    use_libuv_file_watcher = true,
                 },
-                use_libuv_file_watcher = true,
-            },
-        },
+                default_component_configs = {
+                    git_status = {
+                        symbols = {
+                            renamed   = "󰁕",
+                            unstaged  = "󰄱",
+                        },
+                    },
+                },
+            })
+        end,
     },
     -- Add various code snippets
     {
