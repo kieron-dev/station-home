@@ -253,6 +253,10 @@ require("lazy").setup({
                     use_libuv_file_watcher = true,
                 },
                 default_component_configs = {
+                    icon = {
+                        folder_empty = "󰜌",
+                        folder_empty_open = "󰜌",
+                    },
                     git_status = {
                         symbols = {
                             renamed   = "󰁕",
