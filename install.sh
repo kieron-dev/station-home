@@ -6,9 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 main() {
   configure_home "$@"
   generate_gitconfig
-  compile_authorized_keys
-  cleanup_old_vim_plug
-  compile_gpg_keys
+  #compile_authorized_keys
+  #cleanup_old_vim_plug
+  #compile_gpg_keys
 }
 
 generate_gitconfig() {
