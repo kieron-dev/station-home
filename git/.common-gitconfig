@@ -51,5 +51,7 @@
   ; template = ~/.gitmessage
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
+[url "ssh://git@gitlab.eng.vmware.com/"]
+  insteadOf = https://gitlab.eng.vmware.com/
 [merge]
   conflictstyle = diff3
